@@ -5,7 +5,7 @@ $ apt-get -y install apt-transport-https ca-certificates curl software-propertie
 $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
 // Finger print 9DC8 5822 9FC7 DD38 854A E2D8 8D81 803C 0EBF CD88
-$ sudo apt-key fingerprint 0EBFCD88
+$ sudo apt-key fingerprint 0EBFCD88   (optional)
 
 //ADD DOCKER REPO
 $ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
