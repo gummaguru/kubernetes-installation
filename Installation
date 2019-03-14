@@ -35,15 +35,27 @@ $ sudo apt-get install -y kubelet kubeadm kubectl
 // HOLD SERVICE
 $ sudo apt-mark hold kubelet kubeadm kubectl
 
+//Restarting the kubelet is required:
+
+systemctl daemon-reload
+systemctl restart kubelet
+
 // ADDITIONAL SETTINGS 
-$ sudo modprobe br_netfilter
-$ sudo echo "net.ipv4.ip_forward=1" >> /etc/sysctl.conf
-$ sudo echo "net.bridge.bridge-nf-call-iptables=1" >> /etc/sysctl.conf
-$ sudo sysctl -p
+$ sudo modprobe br_netfilter   (Here enabling bridge network filter which is required by to kubernetes)
+$ sudo echo "net.ipv4.ip_forward=1" >> /etc/sysctl.conf    (These all are linux capability related by default IP's packet from linux host can not go outside so that's y  i am enabling by doing 1.it is required 1 node wanted to intearect with another node bcoz thwe will send packets and network packets in b/w if it is  not one would be network problem alter communication b/w the master and node. you should ensure enable.)
+$ sudo echo "net.bridge.bridge-nf-call-iptables=1" >> /etc/sysctl.conf   ( This is also network filter)
+$ sudo sysctl -p   (what ever changes i just wanted to make perminent request. so, i am updating file. it's providing system kernal related system information.)
 
 //SWAP OFF
 #vim.tiny /etc/fstab 
 swapoff -a
+(why we need to swapoff?
+we don't need swapoff on kubernetes. bcoz calculation of schedulker will be 
+impacted if u have swapoff.bcpz swapoff is acting as a memory but actually it is desk 
+and when kubernetes scheduler looking for some memory intensive workload to be place. 
+it will claculate swap value also  this missed configuration let do some problem and distrubing the services.
+so it is always recommeneded to off the swapoff any kubernetes cluster.)
+ 
 
 // NETWORKING AND CLUSTER START
 
@@ -95,7 +107,7 @@ $ sudo kubectl taint nodes --all node-role.kubernetes.io/master-
 
 
 //STATUS CHECK 
-$ sudo kubectl get nodes
+$ sudo kubectl get nodes        
 
 
 ADDING NODE
