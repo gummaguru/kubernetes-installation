@@ -115,16 +115,19 @@ ADDING NODE
 
 
 DASHBOARD
----------
+----------
 
 $ sudo kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/master/aio/deploy/recommended/kubernetes-dashboard.yaml
-$ sudo kubectl get svc -n kube-system | grep kubernetes-dashboard
-$ sudo kubectl edit svc/kubernetes-dashboard -n kube-system
+$ sudo kubectl get svc -n kube-system | grep kubernetes-dashboard   (After this we need use one command that is "curl <IP:Port number>")
+$ curl <IP:Port number>
+$ kube proxy & bg   ( This command we need to run background after that again we can run "curl 127.0.0.1:8001")
+$ curl 127.0.0.1:8001
+$ sudo kubectl edit svc kubernetes-dashboard -n kube-system   (Here we have to change ClusterIP to NodePort)
 //change ClusterIP to NodePort
-// Trouble Shoot
+(// Trouble Shoot
 // Crash loop back dashboard
 // kubectl drain <node_name> --delete-local-data --ignore-daemonsets
-// kubectl uncordon <node_name>
+// kubectl uncordon <node_name>)
 
 ACCESS DASHBOARD
 ----------------
