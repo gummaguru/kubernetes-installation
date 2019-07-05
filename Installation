@@ -69,7 +69,7 @@ so it is always recommeneded to off the swapoff any kubernetes cluster.)
 $ kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=<master_IP>
 
 we can use this command while installing kubernetes instead of above command
-(kubeadm init --pod-network-cidr=10.244.0.0/16  --ignore-preflight-errors=NumCPU flag)
+(kubeadm init --pod-network-cidr=10.244.0.0/16  --ignore-preflight-errors=NumCPU )
 
 // Save join token #kubeadm_join.txt
 
