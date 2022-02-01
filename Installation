@@ -89,6 +89,10 @@ $ sudo kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/bc79dd1
 
 $ sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=<master_IP>
 
+(######### While installing kubeadm if we will get error like "===error execution phase wait-control-plane: couldn't initialize a Kubernetes cluster To see the stack trace of this error execute with --v=5 or higher==="
+   #### Then we should resolve from this steps (https://stackoverflow.com/questions/67606941/kubeadm-init-failing-while-initializing-a-kubernetes-cluster))
+   
+   
 // Save join token #kubeadm_join.txt
 
 //ADM settings 
