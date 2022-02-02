@@ -113,7 +113,9 @@ $ sudo kubectl taint nodes --all node-role.kubernetes.io/master-
 
 //STATUS CHECK 
 $ sudo kubectl get nodes        
-
+     ......... ((((( Here after run kubectl get nodes if we will get status is "NOTREADY" state that means we are facing issue with calico pods)
+            Then we should run command like """'kubectl apply -f https://docs.projectcalico.org/v3.9/manifests/calico.yaml"""
+                 Then after it should be ready state...................
 // If we want cretae a kubeadm token we need run below command
 
 $ kubeadm token create --print-join-command
